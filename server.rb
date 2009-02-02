@@ -2,22 +2,9 @@
  require 'mongrel'
  #require 'erubis'
  require 'erb'
-class Erba
+ require 'Classes/GMethod'
+ require 'Classes/Erb_handler'
  
-  def initialize(method)
-    
-    @method = method
-    
-    @file = File.read("erubis_html/#{@method}.eruby")
-    end
-  
-  def run
-    @testo = ""
-    @uh = ERB.new(@file)
-    @uh.result
-  end
-end
-
  include Mongrel;
  
  class Handler < HttpHandler
@@ -25,13 +12,14 @@ end
      response.start(200) do |head,out|
        method =  request.params["REQUEST_PATH"].to_s
        head["Content-Type"] = "text/html"
+       g = GMethod.new
+       method = method.split("/method/:")[1]
+       out.write(g.method(method).call)
        
-       out.write(Erba.new("time").run) if method =~ /:time/
-       out.write(Erba.new("hello").run) if method =~ /:hello/
+       
      end
    end
  end
- 
  h = HttpServer.new("0.0.0.0", "80")
  
  h.register('/', DirHandler.new(".", true, 'index.html'))

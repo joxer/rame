@@ -12,7 +12,8 @@
       
       function myHandler() {
       if (myRequest.readyState == 4 && myRequest.status == 200) {
-      alert(myRequest.responseText);
+      document.writeln(myRequest.responseText);
+
       }
       }
       
@@ -25,7 +26,8 @@
       myRequest.send(null);
       }
     </script>
-    <input type="inputbox" value="scrivi qui il metodo" id="box" />
+    <div id="a"></id>
+    <input type="inputbox" value="" id="box" />
     <input type="button" value="Clicca per lanciare la richiesta" onClick="esempio3()" />
     
   </body>
