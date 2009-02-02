@@ -1,6 +1,7 @@
- require 'rubygems'
+ #require 'rubygems'
  require 'mongrel'
- require 'erubis'
+ #require 'erubis'
+ require 'erb'
 class Erba
  
   def initialize(method)
@@ -12,7 +13,7 @@ class Erba
   
   def run
     @testo = ""
-    @uh = Erubis::Eruby.new(@file)
+    @uh = ERB.new(@file)
     @uh.result
   end
 end

@@ -1,0 +1,8 @@
+Rame
+
+Rame stands for Ruby + Ajax + Mongrel + Erubis
+
+It's a little server that handle the http request and return the 
+result of a erb page trough the erubis handler
+
+
