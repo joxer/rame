@@ -20,9 +20,9 @@
      end
    end
  end
- h = HttpServer.new("0.0.0.0", "80")
+ h = HttpServer.new("0.0.0.0", "3000")
  
- h.register('/', DirHandler.new(".", true, 'index.html'))
+ h.register('/', DirHandler.new("public_html", true, 'index.html'))
  h.register('/method', Handler.new)
  h.run.join
 

@@ -1,0 +1,34 @@
+<html>
+  <body>
+    <script>
+      var myRequest = null;
+      
+      function CreateXmlHttpReq(handler) {
+      var xmlhttp = null;
+      xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = handler;
+      return xmlhttp;
+      }
+      
+      function myHandler() {
+      if (myRequest.readyState == 4 && myRequest.status == 200) {
+      document.writeln(myRequest.responseText);
+
+      }
+      }
+      
+      function esempio3() {
+      var ah = document.getElementById("box");
+      
+      myRequest = CreateXmlHttpReq(myHandler);
+      myRequest.open("POST","/method/" + ah.value);
+      myRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8"); 
+      myRequest.send(null);
+      }
+    </script>
+    <div id="a"></id>
+    <input type="inputbox" value="" id="box" />
+    <input type="button" value="Clicca per lanciare la richiesta" onClick="esempio3()" />
+    
+  </body>
+</html>
