@@ -1,4 +1,3 @@
-
 class GMethod
   
   def initialize
@@ -6,7 +5,6 @@ class GMethod
     
   end
   
-
   def time
     
     return Erb_Handler.new("time").run
@@ -21,16 +19,5 @@ class GMethod
   def alert_time
     return Erb_Handler.new("alert_time").run
   end
-  
-  
-  
-  
-
-
-  def help
-	
-    return Erb_Handler.new("help").run
     
-  end
-end
-
+     end
