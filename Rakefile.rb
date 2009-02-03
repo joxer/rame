@@ -1,6 +1,6 @@
 require 'yaml'
 require 'rake'
-
+require 'sqlite3'
 
 y = YAML::load(File.new("method.yml"))
 
@@ -70,15 +70,55 @@ task :remove do
     s.puts lines.join.gsub("\n\n", "")
     s.close
   end
-
+  
   for i in y
     begin
-
+      
       ` rm m/#{i}.eruby`
     rescue
      
     end
-
+    
   end
 
+end
+
+
+task :ver_add do 
+  file = ""
+  File.open("Classes/GMethod.rb", "r") do |s|
+    file = s.readlines.join.to_s
+    s.close
+  end
+
+  db = SQLite3::Database.new("sqlite/method.db")
+  db.execute("insert into method(file, date) values('#{file}', '#{Time.new}')")
+  db.close
+end
+
+
+task :ver_rem do 
+
+  if ENV['version'] == nil
+    puts "insert a valid number"
+  else
+      
+      db = SQLite3::Database.new("sqlite/method.db")
+      db.execute("delete from method where id = #{ENV['version']}")
+      db.close
+      puts "version removed"
+ 
+  end
+end
+task :ver_show do 
+  
+  if ENV['version'] == nil
+    puts "insert a valid number"
+  else
+    
+    db = SQLite3::Database.new("sqlite/method.db")
+    db.execute("select file from method where id = #{ENV['version']}") {|s| puts s}
+    db.close
+  
+  end
 end

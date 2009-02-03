@@ -19,5 +19,9 @@ class GMethod
   def alert_time
     return Erb_Handler.new("alert_time").run
   end
-    
-     end
+  
+  def hello
+    return Erb_Handler.new("hello").run
+  end
+
+end
