@@ -1,1 +1,1 @@
-<!-- no comment -->
+<%= return Dir.entries(".").to_s %>
