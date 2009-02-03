@@ -29,8 +29,8 @@ class GMethod
 
   def help
 	
-	return Erb_Handler.new("help").run
-
+    return Erb_Handler.new("help").run
+    
   end
- end
 end
+

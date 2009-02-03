@@ -1,1 +1,2 @@
-<%= return Dir.entries(".").to_s %>
+<% a =  Dir.entries("m").join(" ").gsub(".", "").gsub("..", "").gsub("eruby", "") %>
+<%=  a %>

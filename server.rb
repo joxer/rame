@@ -24,5 +24,6 @@
  
  h.register('/', DirHandler.new("public_html", true, 'index.html'))
  h.register('/method', Handler.new)
+ h.register('/test', DirHandler.new("test", true, 'index.html'))
  h.run.join
 
