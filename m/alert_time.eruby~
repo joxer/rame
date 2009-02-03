@@ -1,3 +1,0 @@
-
-<!-- no comment -->
-<script>alert(<%= Time.new %>)</script>
