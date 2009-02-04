@@ -14,7 +14,7 @@ namespace :method do
   desc "This task add method contained into method.yml to Classes/Gmethod.rb"
   task :add do
     r = Array.new
-    File.open("Classes/GMethod.rb", "r") do |s|
+    File.open("Classes/Method.rb", "r") do |s|
       r = s.readlines
     end
     
@@ -30,13 +30,14 @@ namespace :method do
     end
     
     
-    File.open("Classes/GMethod.rb", "w") do |s|
+    File.open("Classes/Method.rb", "w") do |s|
       r.pop if r[-1] =~ /end/
       r.pop if r[-2] =~ /end/
       for i in y
-        r.push("\n\n  def #{i}\n\n  end")
+        r.push("\n\n  def #{i}\n\nreturn Erb_Handler.new('#{i}').run\n\n  end")
+        
       end
-      r.push("\n end")
+      r.push("\n end") 
       s.puts r.join
       
       s.close
@@ -47,7 +48,7 @@ namespace :method do
   desc "This task remove method contained into method.yml to Classes/Gmethod.rb"
   task :remove do
     lines = Array.new
-    File.open("Classes/GMethod.rb", "r") do |s|
+    File.open("Classes/Method.rb", "r") do |s|
       lines = s.readlines
       0.upto(lines.length - 1) do |f|
         for i in y do 
@@ -71,7 +72,7 @@ namespace :method do
       s.close
     end
     
-    File.open("Classes/GMethod.rb", "w") do |s|
+    File.open("Classes/Method.rb", "w") do |s|
       
       s.puts lines.join.gsub("\n\n", "")
       s.close
@@ -93,10 +94,10 @@ end
 
 namespace :db do
   
-  desc "This task add a version of GMethod.rb into the database"
+  desc "This task add a version of Method.rb into the database"
   task :ver_add do 
     file = ""
-    File.open("Classes/GMethod.rb", "r") do |s|
+    File.open("Classes/Method.rb", "r") do |s|
       file = s.readlines.join.to_s
       s.close
     end
@@ -106,7 +107,7 @@ namespace :db do
     db.close
   end
   
-  desc "This task remove a version of GMethod.rb into the database, use the variable version= to set the version"
+  desc "This task remove a version of Method.rb into the database, use the variable version= to set the version"
   task :ver_rem do 
     
     if ENV['version'] == nil
@@ -120,7 +121,7 @@ namespace :db do
       
     end
   end
-  desc "This task show a version of GMethod.rb into the database"
+  desc "This task show a version of Method.rb into the database"
   task :ver_show do 
     
     if ENV['version'] == nil

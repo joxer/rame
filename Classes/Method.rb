@@ -7,4 +7,11 @@ class GMethod
 
   #write your method here
 
-end
+
+
+  def hello
+
+return Erb_Handler.new('hello').run
+
+  end
+ end
