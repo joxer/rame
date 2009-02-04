@@ -15,7 +15,7 @@ class Socket
 
     
     
-    return Net::HTTP.get URI.parse("{@host}")
+    return Net::HTTP.get URI.parse("#{@host}")
 
     
   end
