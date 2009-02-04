@@ -1,0 +1,23 @@
+require 'net/http'
+require 'uri'
+class Socket
+
+  def initialize(host)
+    
+    @host = host
+
+  end
+  
+  def get
+    
+    url = URI.parse("#{@host}")
+    req = Net::HTTP::Get.new(url.path)
+    res = NEt::HTTP.start(url.host, url.port) {|http|
+      http.request(req)
+    }
+    
+    return res
+  end
+
+
+end

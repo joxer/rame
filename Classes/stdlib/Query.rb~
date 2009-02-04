@@ -1,0 +1,11 @@
+class Query
+
+  def initialize
+
+    @yaml_file = "databases/db.yml"
+    @sqlite_file = "database/
+    
+  end
+
+
+end
