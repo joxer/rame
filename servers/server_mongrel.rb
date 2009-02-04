@@ -1,8 +1,6 @@
- #require 'rubygems'
  require 'mongrel'
- #require 'erubis'
  require 'erb'
- require 'Classes/GMethod'
+ require 'Classes/Method'
  require 'Classes/Erb_handler'
  require 'Classes/stdlib/socket.rb'
  include Mongrel;
