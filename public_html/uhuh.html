@@ -21,13 +21,13 @@
       var ah = document.getElementById("box");
       
       myRequest = CreateXmlHttpReq(myHandler);
-      myRequest.open("POST","./method/socket/" + ah.value);
+      myRequest.open("POST","./method/" + ah.value);
       myRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8"); 
       myRequest.send(null);
       }
     </script>
     <div id="a"></id>
-    <input type="inputbox" value="" id="box" />
+    <input type="textbox" value="" id="box" />
     <input type="button" value="Clicca per lanciare la richiesta" onClick="esempio3()" />
     
   </body>

@@ -1,6 +1,6 @@
  require 'mongrel'
  require 'erb'
- require 'Classes/Method'
+ require 'Classes/Controller'
  require 'Classes/Erb_handler'
  require 'Classes/stdlib/socket.rb'
  include Mongrel;
@@ -12,7 +12,7 @@
      response.start(200) do |head,out|
        method =  request.params["REQUEST_PATH"].to_s
        head["Content-Type"] = "text/html"
-       g = GMethod.new
+       g = Controller.new
        method = method.split("/method/:")[1]
        out.write(g.method(method).call)
 

@@ -1,9 +1,10 @@
 require 'yaml'
 require 'rake'
 require 'sqlite3'
-
+require 'fileutils'
 
 i = ENV['method']
+p i
  task :default do
     puts "puts rake --task to see avaible tasks"
   end
@@ -15,7 +16,7 @@ namespace :method do
   desc "This task add method contained into method.yml to Classes/Gmethod.rb"
   task :add do
     r = Array.new
-    File.open("Classes/Method.rb", "r") do |s|
+    File.open("Classes/Controller.rb", "r") do |s|
       r = s.readlines
     end
     
@@ -29,14 +30,11 @@ namespace :method do
     end
     
     
-    File.open("Classes/Method.rb", "w") do |s|
+    File.open("Classes/Controller.rb", "w") do |s|
       r.pop if r[-1] =~ /end/
       r.pop if r[-2] =~ /end/
       
-        r.push("\n\n  def #{i}\n\n\nreturn Erb_Handler.new('#{i}').run\n\n  end")
-        
-      
-      r.push("\n end") 
+      r.push("\n\n  def #{i}\n\n\nreturn Erb_Handler.new('#{i}').run\n\n  end\n end\n")
       s.puts r.join
       
       s.close
@@ -46,11 +44,12 @@ namespace :method do
   desc "This task remove method contained into method.yml to Classes/Gmethod.rb"
   task :remove do
     lines = Array.new
-    File.open("Classes/Method.rb", "r") do |s|
+    File.open("Classes/Controller.rb", "r") do |s|
       lines = s.readlines.join
       lines = lines.gsub(/def #{i}.*\s*return.*\s*.end/, "")
     end
-    File.open("Classes/Method.rb", "w") {|s| s.puts lines; s.close}
+    File.open("Classes/Controller.rb", "w") {|s| s.puts lines; s.close}
+    rm("m/#{i}.eruby")
   end
 end
 
@@ -59,7 +58,7 @@ namespace :db do
   desc "This task add a version of Method.rb into the database"
   task :ver_add do 
     file = ""
-    File.open("Classes/Method.rb", "r") do |s|
+    File.open("Classes/Controller.rb", "r") do |s|
       file = s.readlines.join.to_s
       s.close
     end
