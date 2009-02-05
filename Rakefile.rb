@@ -43,49 +43,15 @@ namespace :method do
       
     end
   end
-=begin
   desc "This task remove method contained into method.yml to Classes/Gmethod.rb"
   task :remove do
     lines = Array.new
     File.open("Classes/Method.rb", "r") do |s|
-      lines = s.readlines
-      0.upto(lines.length - 1) do |f|
-       
-        if lines[f].match("def #{i}") != nil
-          lines[f] = ""
-          f.upto(lines.length - 1) do |q|
-            
-            if lines[q].match("end") != nil
-              lines[q] = ""
-              break
-            end
-          end
-        end   
-        if lines[f].match("#{i}") != nil
-          
-          lines[f] = ""
-        end
-      end
-      s.close
+      lines = s.readlines.join
+      lines = lines.gsub(/def #{i}.*\s*return.*\s*.end/, "")
     end
-    
-    File.open("Classes/Method.rb", "w") do |s|
-      
-      s.puts lines.join.gsub("\n\n", "")
-      s.close
-    end
-    
-    begin
-      
-      ` rm m/#{i}.eruby`
-    rescue
-      
-    
-      
-    end
-    
+    File.open("Classes/Method.rb", "w") {|s| s.puts lines; s.close}
   end
-=end  
 end
 
 namespace :db do

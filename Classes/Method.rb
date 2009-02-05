@@ -1,2 +1,20 @@
-  end  end  def b  end
+class Method
+
+  def initialize
+    
+  end
+  
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
  end
