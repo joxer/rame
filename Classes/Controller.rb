@@ -8,14 +8,7 @@ class Controller
 
   
   
-  def cacca
-    Modify.new("cacca").transform
-    
-    
-
-    return Erb_Handler.new('cacca').run
-    
-  end
+  
 
 
   def os_type
@@ -32,4 +25,17 @@ class Controller
 return Erb_Handler.new('server_type').run
 
   end
+
+
+  
+
+
+
+  
+
+
+  
+
+
+  
  end

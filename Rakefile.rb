@@ -4,7 +4,7 @@ require 'sqlite3'
 require 'fileutils'
 
 i = ENV['method']
-p i
+
  task :default do
     puts "puts rake --task to see avaible tasks"
   end
