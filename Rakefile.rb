@@ -1,102 +1,64 @@
 require 'yaml'
 require 'rake'
 require 'sqlite3'
+require 'fileutils'
 
-y = YAML::load(File.new("method.yml"))
+i = ENV['method']
 
  task :default do
     puts "puts rake --task to see avaible tasks"
   end
   
 
+
 namespace :method do
    
   desc "This task add method contained into method.yml to Classes/Gmethod.rb"
   task :add do
     r = Array.new
-    File.open("Classes/GMethod.rb", "r") do |s|
+    File.open("Classes/Controller.rb", "r") do |s|
       r = s.readlines
     end
     
-    for i in y
-      
+   
       File.open("m/#{i}.eruby", "w") do |s|
         s.puts "<!-- no comment -->"
         s.close
         
-      end
-      
+          
 
     end
     
     
-    File.open("Classes/GMethod.rb", "w") do |s|
+    File.open("Classes/Controller.rb", "w") do |s|
       r.pop if r[-1] =~ /end/
       r.pop if r[-2] =~ /end/
-      for i in y
-        r.push("\n\n  def #{i}\n\n  end")
-      end
-      r.push("\n end")
+      
+      r.push("\n\n  def #{i}\n\n\nreturn Erb_Handler.new('#{i}').run\n\n  end\n end\n")
       s.puts r.join
       
       s.close
       
     end
   end
-  
   desc "This task remove method contained into method.yml to Classes/Gmethod.rb"
   task :remove do
     lines = Array.new
-    File.open("Classes/GMethod.rb", "r") do |s|
-      lines = s.readlines
-      0.upto(lines.length - 1) do |f|
-        for i in y do 
-          
-          if lines[f].match("def #{i}") != nil
-            lines[f] = ""
-            f.upto(lines.length - 1) do |q|
-              
-              if lines[q].match("end") != nil
-                lines[q] = ""
-                break
-              end
-            end
-          end   
-          if lines[f].match("#{i}") != nil
-            
-            lines[f] = ""
-          end
-        end
-      end
-      s.close
+    File.open("Classes/Controller.rb", "r") do |s|
+      lines = s.readlines.join
+      lines = lines.gsub(/def #{i}.*\s*return.*\s*.end/, "")
     end
-    
-    File.open("Classes/GMethod.rb", "w") do |s|
-      
-      s.puts lines.join.gsub("\n\n", "")
-      s.close
-    end
-    
-    for i in y
-      begin
-        
-        ` rm m/#{i}.eruby`
-      rescue
-        
-      end
-      
-    end
-    
+    File.open("Classes/Controller.rb", "w") {|s| s.puts lines; s.close}
+    rm("m/#{i}.eruby")
   end
-  
 end
 
 namespace :db do
   
-  desc "This task add a version of GMethod.rb into the database"
+  desc "This task add a version of Method.rb into the database"
   task :ver_add do 
     file = ""
-    File.open("Classes/GMethod.rb", "r") do |s|
+    File.open("Classes/Controller.rb", "r") do |s|
       file = s.readlines.join.to_s
       s.close
     end
@@ -106,7 +68,7 @@ namespace :db do
     db.close
   end
   
-  desc "This task remove a version of GMethod.rb into the database, use the variable version= to set the version"
+  desc "This task remove a version of Method.rb into the database, use the variable version= to set the version"
   task :ver_rem do 
     
     if ENV['version'] == nil
@@ -120,7 +82,7 @@ namespace :db do
       
     end
   end
-  desc "This task show a version of GMethod.rb into the database"
+  desc "This task show a version of Method.rb into the database"
   task :ver_show do 
     
     if ENV['version'] == nil

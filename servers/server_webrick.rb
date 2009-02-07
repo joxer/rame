@@ -2,7 +2,7 @@ require 'webrick'
 require 'rubygems'
 require 'erubis'
 require 'Classes/Erb_handler'
-require 'Classes/GMethod'
+require 'Classes/Method'
 include WEBrick
 puts `pwd`
 class Handler < HTTPServlet::AbstractServlet
