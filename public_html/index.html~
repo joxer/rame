@@ -1,0 +1,79 @@
+<html>
+  <head>
+
+    
+	<title>css Zen Garden: The Beauty in CSS Design</title>
+	
+	<script type="text/javascript"></script>
+	
+	<style type="text/css" title="currentStyle" media="screen">
+	  @import "143.css";
+	</style>
+	
+	
+  </head>
+  <body id="css-zen-garden" >
+    
+    <div id="container">
+      <div id="intro">
+	<div id="pageHeader">
+		
+	</div>
+
+	<div id="quickSummary">
+	<A href="howto.html">How to use Rame</a><br/>
+	</div>
+	
+	<div id="preamble">
+	  Wellcome here
+	</div>
+      </div>
+      
+      <div id="supportingText">
+	<div id="explanation">
+	If you are seeing this page, you have succefull installed ramen on your system</br>
+   	Ramen is a new way to develop web with ruby. You just must call a method to the server trough ajax. Ramen required only the sqlite3 gem.
+        </div>
+	
+	<div id="participation">
+	  Click here to see your system configuration:<br/>
+          
+
+	</div>
+	
+	<div id="benefits">
+	  
+	</div>
+	
+	<div id="requirements">
+	  
+	</div>
+	
+	<div id="footer">
+	  
+	</div>
+	
+      </div>
+      
+      
+      <div id="linkList">
+	<div id="linkList2">
+	  <div id="lselect">
+	    
+	  </div>
+	  
+	  <div id="larchives">
+	    
+	  </div>
+	  
+	  <div id="lresources">
+	    
+	  </div>
+	</div>
+      </div>
+      
+      
+    </div>
+    
+  </body>
+</html>

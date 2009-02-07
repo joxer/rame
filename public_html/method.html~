@@ -1,0 +1,5 @@
+   <script src="javascripts/prototype.js" type="text/javascript"></script>
+    <script src="javascripts/scriptaculous.js" type="text/javascript"></script>
+    
+
+new Ajax.Updater({success: 'uname'} , '/method/:os_type', { method:'post' });
