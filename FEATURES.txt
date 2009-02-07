@@ -1,0 +1,3 @@
+0.2 version
+Using the MVC pattern into the structure of the program
+You can use model and the rakefile is more stable :D
