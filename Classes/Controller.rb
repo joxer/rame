@@ -1,5 +1,6 @@
 require 'Classes/Core/Transform'
-
+require 'Classes/Core/Db'
+require 'Classes/models'
 class Controller
 
   def initialize
@@ -8,11 +9,16 @@ class Controller
 
   
   
-  
+  def j
+
+    return Joxer.find(1)
+  end
 
 
   def os_type
+    
 
+    
     
     return Erb_Handler.new('os_type').run
 
