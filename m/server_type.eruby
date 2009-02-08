@@ -1,4 +1,5 @@
 <!-- no comment -->
+your server: 
 <% if `which mongrel_rails`.chop != "" %>
    <%= "mongrel" %>	 
 <% end %>

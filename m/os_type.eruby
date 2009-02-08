@@ -1,2 +1,3 @@
 <!-- no comment -->
+your system: 
 <%= `uname` %>
