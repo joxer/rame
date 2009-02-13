@@ -44,4 +44,20 @@ return Erb_Handler.new('server_type').run
 
 
   
+
+
+  def home
+
+
+return Erb_Handler.new('home').run
+
+  end
+
+
+  def snippet
+
+
+return Erb_Handler.new('snippet').run
+
+  end
  end
