@@ -31,21 +31,8 @@ class Controller
 return Erb_Handler.new('server_type').run
 
   end
-
-
   
-
-
-
   
-
-
-  
-
-
-  
-
-
   def home
 
 
