@@ -1,16 +1,16 @@
 require 'Classes/Core/Transform'
 require 'Classes/Core/Db'
 require 'Classes/models'
-
-
-class Controller < Method
+require 'Classes/Method'
+require 'Classes/Core/Erb_handler'
+class Controller < Methods
   
   def initialize
     
     
 
   end
-  def snippet
-    return "SoS"
-  end
+  
+
+  
 end

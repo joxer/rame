@@ -1,7 +1,7 @@
  require 'mongrel'
  require 'erb'
- require 'Classes/Controller'
- require 'Classes/Erb_handler'
+ require 'Classes/Core/Controller.rb'
+
  require 'Classes/stdlib/socket.rb'
  require 'Classes/Core/File.rb'
  include Mongrel;
