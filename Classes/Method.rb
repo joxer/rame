@@ -1,9 +1,12 @@
-class Methods
-
-  def snippet
 
 
-return Erb_Handler.new('snippet').run
+  
+
+
+  def jose
+
+
+return Erb_Handler.new('jose').run
 
   end
  end
