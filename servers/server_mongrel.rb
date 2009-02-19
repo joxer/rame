@@ -1,7 +1,6 @@
  require 'mongrel'
  require 'erb'
  require 'Classes/Core/Controller.rb'
-
  require 'Classes/stdlib/socket.rb'
  require 'Classes/Core/File.rb'
  include Mongrel;
@@ -30,7 +29,7 @@
        method =  request.params["REQUEST_PATH"].to_s
        head["Content-Type"] = "text/html"
        d = method.split("/method/socket/:")[1].split("+") #d[0] = get ; d[1] = url
-       p method
+ 
        s = Socket.new(d[1])
        
        out.write(s.method(d[0]).call)
@@ -47,7 +46,7 @@
        method =  request.params["REQUEST_PATH"].to_s
        head["Content-Type"] = "text/html"
        d = method.split("/file/:")[1].split("+") #d[0] = read ; d[1] = file
-       p method
+  
        s = Files.new(d[1])
        
        out.write(s.method(d[0]).call)
